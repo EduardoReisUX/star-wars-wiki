@@ -1,9 +1,9 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native'
 
 export const CustomText = styled.Text`
-  font-size: 24px;
-  color: ${({ color }) => color || "white"};
-  font-weight: bold;
+  font-size: ${({ theme }) => theme.metrics.px(24)}px;
+  color: ${({ color, theme }) => color || theme.colors.white};
+  font-family: 'SourceSansPro_700Bold';
   margin-top: 16px;
   line-height: 150%;
-`;
+`
