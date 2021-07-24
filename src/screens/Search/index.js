@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScreenScrollContainer } from '~/components'
+import { ScreenScrollContainer, Text } from '~/components'
 
 export const SearchScreen = () => {
   return (
