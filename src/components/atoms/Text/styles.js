@@ -11,5 +11,6 @@ export const CustomText = styled.Text`
   margin-left: ${({ theme, ml }) => theme.metrics.px(ml || 0)}px;
   margin-right: ${({ theme, mr }) => theme.metrics.px(mr || 0)}px;
 
-  line-height: 150%;
+  line-height: ${({ lh, size, theme }) =>
+    theme.metrics.px(lh || size * 1.8 || 24)}px;
 `

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Hero, ScreenScrollContainer, GoBack } from '~/components'
+import { Hero, ScreenScrollContainer, GoBack, Text } from '~/components'
 import { useDataStore } from '~/services/stores'
 
 export const Detail = () => {
@@ -8,6 +8,12 @@ export const Detail = () => {
   return (
     <ScreenScrollContainer>
       <Hero item={selectedData} onDetail />
+      <Text ml={24} fontFamily="black" size={18}>
+        Descrição
+      </Text>
+      <Text mt={12} ml={24} mr={24} mb={16} size={14}>
+        {selectedData.description}
+      </Text>
       <GoBack />
     </ScreenScrollContainer>
   )
