@@ -2,16 +2,34 @@ import { api } from '../api'
 
 export const useGetData = () => {
   const getFilms = async () => {
-    const response = await api.get('/films').catch((err) => console.log(err))
-    return response.data
+    try {
+      const response = await api.get('/films')
+      return response.data
+    } catch (error) {
+      console.log({ error })
+      return { error }
+    }
   }
 
   const getCharacters = async () => {
-    const response = await api
-      .get('/characters')
-      .catch((err) => console.log(err))
-    return response.data
+    try {
+      const response = await api.get('/characters')
+      return response.data
+    } catch (error) {
+      console.log({ error })
+      return { error }
+    }
   }
 
-  return { getFilms, getCharacters }
+  const getSearchResult = async (query) => {
+    try {
+      const response = await api.get(`search?query=${query}`)
+      return response.data
+    } catch (error) {
+      console.log({ error })
+      return { error }
+    }
+  }
+
+  return { getFilms, getCharacters, getSearchResult }
 }

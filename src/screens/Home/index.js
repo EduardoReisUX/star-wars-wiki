@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { Hero, HomeList, Loader, ScreenScrollContainer } from '~/components'
+import {
+  Hero,
+  HomeList,
+  Loader,
+  ScreenScrollContainer,
+  Container,
+} from '~/components'
 import { useGetData } from '~/services/hooks'
 
 export const Home = () => {
+  const { getFilms, getCharacters } = useGetData()
   const [loading, setLoading] = useState(true)
   const [films, setFilms] = useState([])
   const [characters, setCharacters] = useState([])
-
-  const { getFilms, getCharacters } = useGetData()
 
   const callGetData = async () => {
     const filmsResponse = await getFilms()
@@ -26,9 +31,9 @@ export const Home = () => {
 
   {
     loading && (
-      <ScreenScrollContainer>
+      <Container align="center" justify="center">
         <Loader />
-      </ScreenScrollContainer>
+      </Container>
     )
   }
 

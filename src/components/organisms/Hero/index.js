@@ -5,34 +5,64 @@ import {
   HeroGradient,
   ButtonsView,
 } from './styles'
-import { Text, Logo, Tag, IconButton, PlayButton } from '~/components'
+import {
+  Text,
+  Logo,
+  Tag,
+  IconButton,
+  PlayButton,
+  FavoriteStateModal,
+} from '~/components'
 import { colors } from '~/styles/colors'
 import { useFavorites } from '~/services/hooks'
+import { useDataStore } from '~/services/stores'
+import { useNavigation } from '@react-navigation/core'
 
 export const Hero = ({ item, onDetail }) => {
-  const [loading, setLoading] = useState(true)
+  const navigation = useNavigation()
+  const { setSelectedData } = useDataStore()
+
+  const [showFavoriteModal, setShowFavoriteModal] = useState(null)
   const [isFavorite, setIsFavorite] = useState(false)
   const { getFavorites, addFavorite, removeFavorite } = useFavorites()
   const { image_url, title, subtitle, type } = item
 
   const checkIsFavorite = async () => {
-    setLoading(true)
     const favorites = await getFavorites()
     const isInFavorite = favorites.filter(
       (fv) => fv.id === item.id && fv.type === item.type
     )
     setIsFavorite(isInFavorite.length > 0)
-    setLoading(false)
+  }
+
+  const closeFavoriteModal = () => {
+    setTimeout(() => {
+      setShowFavoriteModal(null)
+    }, 1000)
   }
 
   const addDataToFavorite = async () => {
     await addFavorite(item)
+    setShowFavoriteModal('added')
     checkIsFavorite()
+    closeFavoriteModal()
   }
 
   const removeDataFromFavorite = async () => {
     await removeFavorite(item)
-    checkIsFavorite
+    setShowFavoriteModal('removed')
+    checkIsFavorite()
+    closeFavoriteModal()
+  }
+
+  const onPressDetail = () => {
+    setSelectedData(item)
+    navigation.navigate('Detail')
+  }
+
+  const onPressWatch = () => {
+    setSelectedData(item)
+    navigation.navigate('Watch')
   }
 
   useEffect(() => {
@@ -63,9 +93,10 @@ export const Hero = ({ item, onDetail }) => {
                 isFavorite ? 'remove-circle-outline' : 'add-circle-outline'
               }
             />
-            <PlayButton />
+            <PlayButton onPress={onPressWatch} />
             {!onDetail && (
               <IconButton
+                onPress={onPressDetail}
                 label="Saiba mais"
                 iconName="information-circle-outline"
               />
@@ -73,6 +104,13 @@ export const Hero = ({ item, onDetail }) => {
           </ButtonsView>
         </HeroGradient>
       </HeroImageBackground>
+      {!!showFavoriteModal && (
+        <FavoriteStateModal
+          type={showFavoriteModal}
+          visible={!!showFavoriteModal}
+          onClose={() => showFavoriteModal(null)}
+        />
+      )}
     </HeroContainer>
   )
 }

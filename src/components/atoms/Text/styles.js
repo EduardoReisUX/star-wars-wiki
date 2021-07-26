@@ -1,6 +1,7 @@
 import styled from 'styled-components/native'
 
 export const CustomText = styled.Text`
+  text-align: ${({ align }) => align || 'left'};
   font-size: ${({ theme, size }) => theme.metrics.px(size || 24)}px;
   color: ${({ theme, color }) => theme.colors[color || 'white']};
   font-family: ${({ theme, fontFamily }) =>

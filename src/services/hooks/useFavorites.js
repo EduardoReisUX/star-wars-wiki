@@ -4,29 +4,28 @@ const DB_KEY = '@StarWarsWiki:favorites'
 
 export const useFavorites = () => {
   const addFavorite = async (data) => {
-    let newDb
-    const value = await AsyncStorage.getItem(DB_KEY).catch((err) =>
-      console.log(err)
-    )
-
-    if (value !== null) {
-      const db = JSON.parse(value)
-      newDb = [...db, data]
-    } else {
-      newDb = [data]
+    try {
+      let newDb
+      const value = await AsyncStorage.getItem(DB_KEY)
+      if (value !== null) {
+        // já existe um banco de dados
+        const db = JSON.parse(value)
+        newDb = [...db, data]
+      } else {
+        // preciso criar um novo banco de dados
+        newDb = [data]
+      }
+      const jsonValue = JSON.stringify(newDb)
+      await AsyncStorage.setItem(DB_KEY, jsonValue)
+      return newDb
+    } catch (error) {
+      console.log({ error })
+      return { error }
     }
-
-    const jsonValue = JSON.stringify(newDb)
-    await AsyncStorage.setItem(DB_KEY, jsonValue)
-
-    return newDb
   }
 
   const getFavorites = async () => {
-    const value = await AsyncStorage.getItem(DB_KEY).catch((err) =>
-      console.log(err)
-    )
-
+    const value = await AsyncStorage.getItem(DB_KEY)
     if (value !== null) {
       const db = JSON.parse(value)
       return db
@@ -35,22 +34,25 @@ export const useFavorites = () => {
   }
 
   const removeFavorite = async (data) => {
-    let newDb
-    const value = await AsyncStorage.getItem(DB_KEY).catch((err) =>
-      console.log(err)
-    )
+    try {
+      let newDb
+      const value = await AsyncStorage.getItem(DB_KEY)
+      if (value !== null) {
+        // já existe um banco de dados
+        const db = JSON.parse(value)
+        newDb = db.filter((fv) => fv.id !== data.id && fv.title !== data.title)
+      } else {
+        // preciso criar um novo banco de dados
+        newDb = []
+      }
 
-    if (value !== null) {
-      const db = JSON.parse(value)
-      newDb = db.filter((fv) => fv.id !== data.id && fv.title !== data.title)
-    } else {
-      newDb = []
+      const jsonValue = JSON.stringify(newDb)
+      await AsyncStorage.setItem(DB_KEY, jsonValue)
+      return newDb
+    } catch (error) {
+      console.log({ error })
+      return { error }
     }
-
-    const jsonValue = JSON.stringify(newDb)
-    await AsyncStorage.setItem(DB_KEY, jsonValue)
-
-    return newDb
   }
 
   return { addFavorite, getFavorites, removeFavorite }

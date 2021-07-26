@@ -11,7 +11,7 @@ export const Detail = () => {
       <Text ml={24} fontFamily="black" size={18}>
         Descrição
       </Text>
-      <Text mt={12} ml={24} mr={24} mb={16} size={14}>
+      <Text mt={12} ml={24} mr={24} size={14}>
         {selectedData.description}
       </Text>
       <GoBack />

@@ -11,7 +11,9 @@ export const SplashScreen = ({ navigation }) => {
   return (
     <Container align="center" justify="center">
       <Logo />
-      <Text fontFamily="bold">StarWars - Wiki</Text>
+      <Text fontFamily="bold" size={24} mt={12}>
+        StarWars - Wiki
+      </Text>
     </Container>
   )
 }

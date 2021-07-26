@@ -13,7 +13,7 @@ import {
 import { theme } from './src/styles'
 import { Routes } from './src/routes'
 
-AsyncStorage.clear()
+//AsyncStorage.clear()
 
 export default function App() {
   let [fontsLoaded] = useFonts({

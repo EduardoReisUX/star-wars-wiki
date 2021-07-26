@@ -1,22 +1,20 @@
 import React from 'react'
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-
 import {
   Home,
   SplashScreen,
   Detail,
   SearchScreen,
   FavoriteScreen,
+  WatchScreen,
 } from '../screens'
-
 import { BottomBar } from '~/components'
-import { Ionicons } from '@expo/vector-icons'
 
 const BottomRoute = () => {
   const Tab = createBottomTabNavigator()
+
   return (
     <Tab.Navigator tabBar={(props) => <BottomBar {...props} />}>
       <Tab.Screen name="Home" component={Home} />
@@ -43,6 +41,7 @@ export const Routes = () => {
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Home" component={BottomRoute} />
         <Stack.Screen name="Detail" component={Detail} />
+        <Stack.Screen name="Watch" component={WatchScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )

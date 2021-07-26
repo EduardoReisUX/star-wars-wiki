@@ -19,7 +19,7 @@ export const HomeList = ({ data, title, type }) => {
         contentContainerStyle={{
           paddingTop: theme.metrics.px(12),
           paddingBottom: theme.metrics.px(24),
-          paddingLeft: theme.metrics.px(12),
+          paddingLeft: theme.metrics.px(24),
         }}
       />
     </ListContainer>

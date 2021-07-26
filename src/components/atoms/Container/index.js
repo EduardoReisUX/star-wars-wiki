@@ -11,14 +11,14 @@ export const Container = styled.View`
 `
 
 export const ScreenScrollContainer = styled.ScrollView.attrs(
-  ({ theme, withPadding }) => {
+  ({ theme, withPadding }) => ({
     contentContainerStyle: withPadding
       ? {
           paddingHorizontal: theme.metrics.px(24),
-          paddinVertical: theme.metrics.px(56),
+          paddingVertical: theme.metrics.px(56),
         }
-      : {}
-  }
+      : {},
+  })
 )`
   background-color: ${({ bg, theme }) => theme.colors[bg || 'dark']};
 `

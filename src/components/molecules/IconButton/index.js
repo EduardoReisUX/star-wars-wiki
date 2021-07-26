@@ -6,10 +6,10 @@ import { theme } from '~/styles/theme'
 
 export const IconButton = ({ iconName, label, onPress }) => {
   return (
-    <ButtonContainer>
+    <ButtonContainer onPress={onPress}>
       <Ionicons
         name={iconName}
-        size={theme.metrics.px(24)}
+        size={theme.metrics.px(14)}
         color={theme.colors.white}
       />
       <Text fontFamily="bold" size={10} mt={6}>
