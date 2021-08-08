@@ -79,7 +79,12 @@ export const Hero = ({ item, onDetail }) => {
       >
         <HeroGradient colors={[colors.dark, 'transparent', colors.dark]}>
           {!onDetail && <Logo size="small" />}
-          <Tag mt={onDetail ? 224 : 200}>{type}</Tag>
+          <Tag
+            width={type === 'Characters' ? 102 : 64}
+            mt={onDetail ? 224 : 197.5}
+          >
+            {type}
+          </Tag>
           <Text fontFamily="bold" size={28} mt={8}>
             {title}
           </Text>
@@ -90,16 +95,18 @@ export const Hero = ({ item, onDetail }) => {
                 onPress={() =>
                   isFavorite ? removeDataFromFavorite() : addDataToFavorite()
                 }
-                label={isFavorite ? 'Del dos favoritos' : 'Add aos favoritos'}
+                label={isFavorite ? 'Remover favorito' : 'Add favorito'}
                 iconName={
                   isFavorite ? 'remove-circle-outline' : 'add-circle-outline'
                 }
               />
             </ButtonItemView>
 
-            <ButtonItemView>
-              <PlayButton onPress={onPressWatch} />
-            </ButtonItemView>
+            {!onDetail && (
+              <ButtonItemView>
+                <PlayButton onPress={onPressWatch} />
+              </ButtonItemView>
+            )}
 
             <ButtonItemView align="flex-end">
               {!onDetail && (
@@ -113,6 +120,7 @@ export const Hero = ({ item, onDetail }) => {
           </ButtonsView>
         </HeroGradient>
       </HeroImageBackground>
+
       {!!showFavoriteModal && (
         <FavoriteStateModal
           type={showFavoriteModal}

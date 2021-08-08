@@ -6,8 +6,9 @@ export const TagContainer = styled.View`
   justify-content: center;
   background-color: ${({ theme }) => theme.colors.red};
   height: ${({ theme }) => theme.metrics.px(24)}px;
-  width: auto;
   border-radius: ${({ theme }) => theme.metrics.px(24)}px;
+  width: ${({ theme, width }) =>
+    width ? `${theme.metrics.px(width)}px` : 'auto'};
   max-width: ${({ theme }) => theme.metrics.px(86)}px;
 
   margin-top: ${({ theme, mt }) => theme.metrics.px(mt || 0)}px;

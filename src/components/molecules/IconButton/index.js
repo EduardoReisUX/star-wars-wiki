@@ -9,10 +9,10 @@ export const IconButton = ({ iconName, label, onPress }) => {
     <ButtonContainer onPress={onPress}>
       <Ionicons
         name={iconName}
-        size={theme.metrics.px(14)}
+        size={theme.metrics.px(24)}
         color={theme.colors.white}
       />
-      <Text fontFamily="bold" size={10} mt={6}>
+      <Text fontFamily="semiBold" size={10}>
         {label}
       </Text>
     </ButtonContainer>

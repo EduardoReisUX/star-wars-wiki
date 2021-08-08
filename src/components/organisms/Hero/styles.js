@@ -5,7 +5,8 @@ export const HeroContainer = styled.View`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: ${({ theme }) => theme.metrics.px(460)}px;
+  //height: ${({ theme }) => theme.metrics.px(440)}px;
+  padding-bottom: ${({ theme }) => theme.metrics.px(24)}px;
 `
 
 export const HeroImageBackground = styled.ImageBackground`
@@ -26,8 +27,8 @@ export const ButtonsView = styled.View`
   width: 100%;
   margin-top: ${({ theme }) => theme.metrics.px(12)}px;
   flex-direction: row;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-evenly;
 `
 
 export const ButtonItemView = styled.View`

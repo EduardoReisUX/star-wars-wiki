@@ -13,7 +13,7 @@ export const PlayButton = ({ onPress }) => {
         color={theme.colors.black}
       />
       <Text fontFamily="bold" size={14} color={'black'} ml={4}>
-        Play
+        Assistir
       </Text>
     </ButtonContainer>
   )

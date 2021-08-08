@@ -9,4 +9,6 @@ export const ButtonContainer = styled.TouchableOpacity`
   width: ${({ theme }) => theme.metrics.px(100)}px;
   border-radius: ${({ theme }) => theme.metrics.px(8)}px;
   background-color: ${({ theme }) => theme.colors.white};
+  margin-top: ${({ theme, mt }) =>
+    mt ? `${theme.metrics.px(mt)}px` : `${theme.metrics.px(0)}px`};
 `
