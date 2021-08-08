@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 
 export const HeroContainer = styled.View`
   display: flex;
-  flex-direction: columns;
+  flex-direction: column;
   width: 100%;
   height: ${({ theme }) => theme.metrics.px(460)}px;
 `
@@ -28,4 +28,10 @@ export const ButtonsView = styled.View`
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
+`
+
+export const ButtonItemView = styled.View`
+  flex: 1;
+  flex-direction: column;
+  align-items: ${({ align }) => align || 'center'};
 `

@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "App that list all the movies and characters from Star Wars universe.",
+    "githubUrl": "https://github.com/EduardoReisUX/star-wars-wiki"
   }
 }

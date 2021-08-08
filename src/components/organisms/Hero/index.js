@@ -4,6 +4,7 @@ import {
   HeroImageBackground,
   HeroGradient,
   ButtonsView,
+  ButtonItemView,
 } from './styles'
 import {
   Text,
@@ -84,23 +85,31 @@ export const Hero = ({ item, onDetail }) => {
           </Text>
           <Text size={18}>{subtitle}</Text>
           <ButtonsView>
-            <IconButton
-              onPress={() =>
-                isFavorite ? removeDataFromFavorite() : addDataToFavorite()
-              }
-              label={isFavorite ? 'Del dos favoritos' : 'Add aos favoritos'}
-              iconName={
-                isFavorite ? 'remove-circle-outline' : 'add-circle-outline'
-              }
-            />
-            <PlayButton onPress={onPressWatch} />
-            {!onDetail && (
+            <ButtonItemView align="flex-start">
               <IconButton
-                onPress={onPressDetail}
-                label="Saiba mais"
-                iconName="information-circle-outline"
+                onPress={() =>
+                  isFavorite ? removeDataFromFavorite() : addDataToFavorite()
+                }
+                label={isFavorite ? 'Del dos favoritos' : 'Add aos favoritos'}
+                iconName={
+                  isFavorite ? 'remove-circle-outline' : 'add-circle-outline'
+                }
               />
-            )}
+            </ButtonItemView>
+
+            <ButtonItemView>
+              <PlayButton onPress={onPressWatch} />
+            </ButtonItemView>
+
+            <ButtonItemView align="flex-end">
+              {!onDetail && (
+                <IconButton
+                  onPress={onPressDetail}
+                  label="Saiba mais"
+                  iconName="information-circle-outline"
+                />
+              )}
+            </ButtonItemView>
           </ButtonsView>
         </HeroGradient>
       </HeroImageBackground>
