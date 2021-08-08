@@ -5,8 +5,7 @@ export const HeroContainer = styled.View`
   display: flex;
   flex-direction: column;
   width: 100%;
-  //height: ${({ theme }) => theme.metrics.px(440)}px;
-  padding-bottom: ${({ theme }) => theme.metrics.px(24)}px;
+  max-height: ${({ theme }) => theme.metrics.px(460)}px;
 `
 
 export const HeroImageBackground = styled.ImageBackground`
@@ -19,6 +18,7 @@ export const HeroGradient = styled(LinearGradient)`
   flex-direction: column;
   width: 100%;
   height: 100%;
+  padding-bottom: ${({ theme }) => theme.metrics.px(24)}px;
   padding-horizontal: ${({ theme }) => theme.metrics.px(24)}px;
   padding-top: ${({ theme }) => theme.metrics.px(56)}px;
 `

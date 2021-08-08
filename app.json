@@ -8,27 +8,25 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#161616"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#161616"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "App that list all the movies and characters from Star Wars universe.",
+    "description": "App that says all about the movies and characters from Star Wars universe.",
     "githubUrl": "https://github.com/EduardoReisUX/star-wars-wiki"
   }
 }
